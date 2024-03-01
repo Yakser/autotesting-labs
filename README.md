@@ -1,5 +1,7 @@
 # autotesting-labs
 
+![Linters](https://github.com/yakser/autotesting-labs/actions/workflows/linters.yml/badge.svg)
+
 ## Usage
 
 Create venv and install dependencies:
