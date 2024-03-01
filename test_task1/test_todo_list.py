@@ -3,13 +3,15 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.remote.webelement import WebElement
 
-BASE_URL = 'https://lambdatest.github.io/sample-todo-app'
+BASE_URL = "https://lambdatest.github.io/sample-todo-app"
 
 
 @pytest.fixture(name="find_nth_checkbox")
 def find_nth_checkbox_fixture():
     def find_nth_checkbox(selenium: WebDriver, n: int) -> WebElement:
-        return selenium.find_element(By.CSS_SELECTOR, f"ul li:nth-child({n}) input[type=checkbox]")
+        return selenium.find_element(
+            By.CSS_SELECTOR, f"ul li:nth-child({n}) input[type=checkbox]"  # noqa: E231
+        )
 
     return find_nth_checkbox
 
