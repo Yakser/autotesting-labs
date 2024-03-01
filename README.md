@@ -14,6 +14,6 @@ poetry install
 Run tests:
 
 ```bash
-pytest
+pytest --driver Firefox --driver-path /path/to/driver -n <NUM_OF_WORKERS>
 ```
 
