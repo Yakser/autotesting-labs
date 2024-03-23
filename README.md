@@ -6,16 +6,31 @@
 
 Create venv and install dependencies:
 
-```bash
-python -m virtualenv --python=3.12 venv
-source venv/bin/activate # Windows: venv\Scripts\activate
-pip install poetry
-poetry install
-```
+- Windows:
+    ```bash
+    python -m virtualenv --python=3.12 venv
+    ./venv/Scripts/activate
+    pip install poetry
+    poetry install
+    ```
+  
+- Linux/MacOS:
+    ```bash
+    python -m virtualenv --python=3.12 venv
+    source venv/bin/activate
+    pip install poetry
+    poetry install
+    ```
 
 Run tests:
 
 ```bash
-pytest --driver Firefox --driver-path /path/to/driver -n <NUM_OF_WORKERS>
+pytest --driver Firefox -n <NUM_OF_WORKERS>
+```
+
+Example: 
+
+```bash
+pytest --driver Firefox -n 5
 ```
 
