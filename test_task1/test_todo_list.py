@@ -37,15 +37,25 @@ def test_text_remaining(selenium: WebDriver, get_text_remaining):
 
 def test_first_item_not_selected(selenium: WebDriver, find_nth_checkbox):
     selenium.get(BASE_URL)
-    element = find_nth_checkbox(selenium, 1)
-    assert not element.get_attribute("checked")
+    checkbox = find_nth_checkbox(selenium, 1)
+    span = checkbox.find_element(By.XPATH, "following-sibling::*[1]")
+    assert not checkbox.get_attribute("checked")
+    assert span.get_attribute("class") == "done-false"
 
 
 def test_click_todos(selenium: WebDriver, find_nth_checkbox):
     selenium.get(BASE_URL)
-    for checkbox in selenium.find_elements(By.CSS_SELECTOR, "ul input[type=checkbox]"):
+    for todo_item in selenium.find_elements(By.CSS_SELECTOR, "ul li"):
+        checkbox = todo_item.find_element(By.CSS_SELECTOR, "input[type=checkbox]")
+        assert (
+            todo_item.find_element(By.CSS_SELECTOR, "span").get_attribute("class")
+            == "done-false"
+        )
         checkbox.click()
-        assert checkbox.get_attribute("checked")
+        assert (
+            todo_item.find_element(By.CSS_SELECTOR, "span").get_attribute("class")
+            == "done-true"
+        )
 
 
 def test_add_new_todo_item(selenium: WebDriver, find_nth_checkbox, get_text_remaining):
@@ -56,9 +66,13 @@ def test_add_new_todo_item(selenium: WebDriver, find_nth_checkbox, get_text_rema
     selenium.find_element(By.ID, "addbutton").click()
 
     added_checkbox = find_nth_checkbox(selenium, 6)
+    span = added_checkbox.find_element(By.XPATH, "following-sibling::*[1]")
+
     assert not added_checkbox.get_attribute("checked")
+    assert span.get_attribute("class") == "done-false"
     assert get_text_remaining(selenium) == "6 of 6 remaining"
 
     added_checkbox.click()
     assert added_checkbox.get_attribute("checked")
+    assert span.get_attribute("class") == "done-true"
     assert get_text_remaining(selenium) == "5 of 6 remaining"
