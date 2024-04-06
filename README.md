@@ -31,6 +31,15 @@ pytest --driver Firefox -n <NUM_OF_WORKERS>
 Example: 
 
 ```bash
-pytest --driver Firefox -n 5
+pytest --driver Firefox -n 5 --alluredir=./allure-reports
+allure serve ./allure-reports
 ```
 
+## Allure reports
+
+![img.png](img/img.png)
+
+When test fails:
+
+![img.png](img/img_2.png)
+![img_1.png](img/img_1.png)
