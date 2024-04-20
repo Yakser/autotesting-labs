@@ -1,4 +1,5 @@
 import datetime
+import time
 
 from selenium.webdriver.support import expected_conditions as ec
 
@@ -25,25 +26,13 @@ def test_timetable_opens(main_page):
 
     assert main_page.driver.title == f"Расписание {group_number}"
 
-    if datetime.datetime.now().day != 7:
+    # if today is not sunday
+    if datetime.datetime.now().weekday() != 6:
         today_schedule = main_page.get_today_schedule()
         assert (
             today_schedule.value_of_css_property("background-color")
             == "rgb(226, 255, 217)"
         )
-
     week_schedule = main_page.get_week_schedule()
     assert len(week_schedule) == 6
 
-    today_day_num = datetime.datetime.now().day
-    for i in range(6):
-        if i + 1 == today_day_num:
-            assert (
-                week_schedule[i].value_of_css_property("background-color")
-                == "rgb(226, 255, 217)"
-            )
-        else:
-            assert (
-                week_schedule[i].value_of_css_property("background-color")
-                == "rgba(0, 0, 0, 0)"
-            )

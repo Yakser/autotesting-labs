@@ -9,8 +9,7 @@ from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 
-type Second = int
-WAIT_TIMEOUT: Second = 10
+WAIT_TIMEOUT_S = 10
 
 
 class BasePage:
@@ -18,7 +17,7 @@ class BasePage:
 
     def __init__(self, driver: WebDriver):
         self.driver = driver
-        self.wait = WebDriverWait(self.driver, WAIT_TIMEOUT)
+        self.wait = WebDriverWait(self.driver, WAIT_TIMEOUT_S)
 
 
 @pytest.fixture(name="main_page")
@@ -75,7 +74,7 @@ class MainPage(BasePage):
         return self.wait.until(ec.presence_of_element_located(MainPageLocators.TODAY_SCHEDULE))
 
     def get_week_schedule(self):
-        return self.driver.find_elements(By.CSS_SELECTOR, '.schedule .schedule-day')
+        return self.driver.find_elements(By.CSS_SELECTOR, '.schedule-day')
 
     def get_groups_list(self, groups_element):
         return groups_element.find_elements(By.CSS_SELECTOR, '.group')
