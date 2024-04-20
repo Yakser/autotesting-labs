@@ -9,8 +9,7 @@ from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 
-type Second = int
-WAIT_TIMEOUT: Second = 10
+WAIT_TIMEOUT_S = 10
 
 
 class BasePage:
@@ -18,7 +17,7 @@ class BasePage:
 
     def __init__(self, driver: WebDriver):
         self.driver = driver
-        self.wait = WebDriverWait(self.driver, WAIT_TIMEOUT)
+        self.wait = WebDriverWait(self.driver, WAIT_TIMEOUT_S)
 
 
 @pytest.fixture(name="main_page")
