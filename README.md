@@ -22,10 +22,15 @@ Create venv and install dependencies:
     poetry install
     ```
 
+- Or create venv using poetry (python 3.12 and poetry should be already installed):
+  ```bash
+  poetry shell
+  ```
+
 Run tests:
 
 ```bash
-pytest --driver Firefox -n <NUM_OF_WORKERS>
+pytest --driver Firefox -n <NUM_OF_WORKERS> --alluredir=./allure-reports
 ```
 
 Example: 
