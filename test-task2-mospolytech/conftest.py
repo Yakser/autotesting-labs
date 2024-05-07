@@ -91,7 +91,7 @@ class MainPage(BasePage):
         )
 
     def get_week_schedule(self):
-        return self.driver.find_elements(By.CSS_SELECTOR, ".schedule .schedule-day")
+        return self.driver.find_elements(By.CSS_SELECTOR, ".schedule-day")
 
     def get_groups_list(self, groups_element):
         return groups_element.find_elements(By.CSS_SELECTOR, ".group")
