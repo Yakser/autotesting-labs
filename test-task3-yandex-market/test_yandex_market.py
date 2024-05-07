@@ -10,4 +10,3 @@ def test_yandex_market_filters(main_page):
     assert h1.text.startswith("Ноутбуки")
 
     main_page.show_resale_products()
-    assert 0
