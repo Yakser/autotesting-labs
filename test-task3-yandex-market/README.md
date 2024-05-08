@@ -1,7 +1,0 @@
-# Task 3 – Yandex Market
-
-Чтобы увидеть info логи, которые выводят информацию о товарах нужно запустить тест командой:
-
-```bash
-pytest --driver Firefox  --alluredir=./allure-reports --log-cli-level=INFO
-```

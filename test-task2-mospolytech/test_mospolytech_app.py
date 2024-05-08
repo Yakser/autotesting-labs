@@ -1,4 +1,5 @@
 import datetime
+import time
 
 from selenium.webdriver.support import expected_conditions as ec
 
@@ -34,3 +35,4 @@ def test_timetable_opens(main_page):
         )
     week_schedule = main_page.get_week_schedule()
     assert len(week_schedule) == 6
+
