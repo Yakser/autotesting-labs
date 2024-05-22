@@ -42,3 +42,11 @@ def test_login_happy_path(main_page):
 def test_login_invalid_credentials(main_page):
     main_page.open()
     # todo: проверить, что при неверном логине или пароле в форме входа отображается соответствующая ошибка
+
+
+@pytest.skip()
+def test_profile_happy_path(main_page):
+    main_page.open()
+    # todo: авторизоваться
+    # todo: зайти в профиль
+    # todo: проверить, что в профиле лежат нужные данные
