@@ -1,5 +1,7 @@
 import time
 
+import pytest
+
 
 def test_filter_by_name(main_page):
     main_page.open()
@@ -28,3 +30,15 @@ def test_filter_by_tags(main_page):
     for uni in universities:
         tags = {tag.text for tag in main_page.get_university_tags(uni)}
         assert any(tag.lower() in tags for tag in tags_values)
+
+
+@pytest.skip()
+def test_login_happy_path(main_page):
+    main_page.open()
+    # todo: проверить happy path логина
+
+
+@pytest.skip()
+def test_login_invalid_credentials(main_page):
+    main_page.open()
+    # todo: проверить, что при неверном логине или пароле в форме входа отображается соответствующая ошибка
